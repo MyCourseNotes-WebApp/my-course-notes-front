@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import { Button, Col, Row } from 'reactstrap';
 import landingImg from '../../assets/student.png';
+import { RegisterButton } from '../../components/RegisterButton/RegisterButton';
 
-export const LandingPage:React.FC<undefined> = () => {
+interface IProps{
+    username:string;
+}
+
+const LandingPage:React.FC<IProps> = (props:IProps) => {
+    // useEffect(() => {return}, [props.username]);
+
     return(
         <>
         <Row style={{width: "100%", minHeight: "70vh", margin: "0", backgroundColor: "#006699", color: "white"}}>
@@ -23,8 +32,7 @@ export const LandingPage:React.FC<undefined> = () => {
                                 <div>
                                     Want an example?
                                 </div>
-                                <br />
-                                <Button className="landing-btn">
+                                <Button className="grey-btn">
                                     See here!
                                 </Button>
                             </Col>
@@ -32,10 +40,9 @@ export const LandingPage:React.FC<undefined> = () => {
                                 <div>
                                     Interested?
                                 </div>
-                                <br />
-                                <Button className="landing-btn">
+                                <RegisterButton>
                                     Get Started!
-                                </Button>
+                                </RegisterButton>
                             </Col>
                         </Row>
                     </Col>
@@ -60,7 +67,7 @@ export const LandingPage:React.FC<undefined> = () => {
                 </Row>
             </Col>
         </Row>
-        <Row className="d-flex text-center" style={{color: "black", backgroundColor: "#DDDDDD", minHeight: "70vh", width: "100%", padding: "30px 0", margin: "0"}}>
+        <Row className="d-flex text-center" style={{color: "black", backgroundColor: "#DDDDDD", minHeight: "30vh", width: "100%", padding: "30px 0", margin: "0"}}>
             <Col xs="1" />
             <Col xs="10">
                 <h1>
@@ -73,6 +80,15 @@ export const LandingPage:React.FC<undefined> = () => {
             </Col>
             <Col xs="1" />
         </Row>
+        {props.username ? <Redirect to="/home" /> : <React.Fragment />}
         </>
     );
 }
+
+const mapStateToProps = (store:any):IProps => {
+    return {
+        username: store.userState.username
+    };
+};
+
+export default connect<IProps>(mapStateToProps)(LandingPage);

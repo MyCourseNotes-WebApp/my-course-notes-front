@@ -6,3 +6,50 @@ html body {
 .full-width {
   width: 100vw;
 }
+
+button.grey-btn {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 5px;
+  background-color: #6C757D;
+  font-family: futura-pt, sans-serif;
+  border: 3px solid #6C757D;
+  border-radius: 0.5rem;
+  font-style: normal;
+  font-weight: bold;
+  transition: all 0.3s ease 0s;
+}
+
+button.grey-btn:hover {
+  background-color:white;
+  border: 3px solid #6C757D;
+  box-shadow: none;
+  color: #6C757D;
+  font-weight: bold;
+}
+
+button.grey-btn:focus {
+  background-color: white ;
+  border: 3px solid #6C757D ;
+  box-shadow: none !important;
+  color: #6C757D;
+  font-weight: bold;
+}
+
+button.grey-btn:active {
+  background-color: white !important;
+  border: 3px solid cyan !important;
+  box-shadow: none !important;
+  color: #6C757D;
+  font-weight: bold;
+}
+
+div.modal-header {
+  background-color: #009999;
+  color: cyan;
+  padding: 2rem;
+}
+
+div.modal-footer {
+  background-color: #009999;
+}
